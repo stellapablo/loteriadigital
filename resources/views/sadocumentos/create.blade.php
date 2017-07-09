@@ -8,7 +8,10 @@
                 <div class="panel-wrapper collapse in" aria-expanded="true">
                     <div class="panel-body">
 
-                        @if (count($errors) > 0)
+                    @include('flash::message')
+
+
+                    @if (count($errors) > 0)
                             <div class="alert alert-danger">
                                 <ul>
                                     @foreach ($errors->all() as $error)
@@ -18,7 +21,7 @@
                             </div>
                         @endif
                         @include('layouts.flash')
-                        <form action="{{ route('saddocumentos.store') }}" method="POST" >
+                        <form action="{{ route('sad-documento.store') }}" enctype="multipart/form-data"  method="POST" >
                             {{ csrf_field() }}
                             <div class="form-body">
                                 <h3 class="box-title">Datos de consultas</h3>
@@ -26,41 +29,43 @@
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label">Número de acta</label>
-                                            {!! Form::text('numero', null, ['class' => 'form-control'])!!}
+                                            <label class="control-label">Tipo de documento</label>
+                                            {!! Form::text('tipo_documento', null, ['class' => 'form-control'])!!}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Numero de documento</label>
+                                            {!! Form::text('nro_documento', null, ['class' => 'form-control'])!!}
                                         </div>
                                     </div>
                                 </div>
-                                <!--/row-->
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label">Fecha</label>
+                                            <label class="control-label">Fecha de documento</label>
                                             <div class="input-group">
-                                                {!! Form::text('fecha_doc', null, ['class' => 'form-control mydatepicker', 'placeholder' => 'dd/mm/yyyy'])!!}
+                                                {!! Form::text('fecha_documento', null, ['class' => 'form-control mydatepicker', 'placeholder' => 'dd/mm/yyyy'])!!}
                                                 <span class="input-group-addon"><i class="icon-calender"></i></span>
                                             </div>
                                         </div>
                                     </div>
-
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label class="control-label">Tomo</label>
+                                            {!! Form::text('tomo', null, ['class' => 'form-control'])!!}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label class="control-label">Resuelve</label>
-                                            <input type="text" name="resuelve" class="col-md-3 form-control">
+                                            <label class="control-label">Ubicación</label>
+                                            {!! Form::select('store_id', $ubicaciones ,  null, ['class' => 'form-control col-sm-4'])!!}
                                         </div>
                                     </div>
-                                </div>
-                                <!--/row-->
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <label class="control-label">Observaciones</label>
-                                        <div>
-                                            <textarea class="form-control" name="observaciones" rows="5"></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
+
+                                    <div class="col-md-4">
                                         <label class="control-label"></label>
                                         <div class="input-group m-b-30"> <span class="input-group-addon">Tags</span>
                                             <div class="bootstrap-tagsinput">
@@ -69,17 +74,32 @@
                                         </div>
                                     </div>
                                 </div>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <label class="control-label">Detalle del documento</label>
+                                        <div>
+                                            {{ Form::textarea('detalle',null,['class'=>'form-control','rows'=>'5']) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="control-label">Documento a subir:</label>
+                                            <div class="input-group">
+                                                {!! Form::file('file', null, ['class' => 'form-control'])!!}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                                 <hr>
                                 <div class="form-actions">
-                                    <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i> Guardar</button>
+                                    <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i>Guardar</button>
                                 </div>
                                 <div id="contInputs">
                                 </div>
+                            </div>
                         </form>
-                        <form action="{{ route('saddocumentos.upload') }}" id="addDoc" method="POST" class="dropzone">
-                            {{ csrf_field() }}
-                        </form>
-                    </div>
                 </div>
             </div>
         </div>
@@ -101,7 +121,7 @@
             dictDefaultMessage: 'Arrastre el documento que desea guardar',
             dictCancelUpload: true,
             dictRemoveFile: 'Eliminar',
-// The setting up of the dropzone
+            // The setting up of the dropzone
             init: function () {
                 var i = 0;
                 var fileList = new Array;
@@ -115,13 +135,10 @@
 
                 });
                 this.on("removedfile", function (file) {
-
-
                     //console.log(file.xhr.responseText);
                     var valor = document.getElementById('valor[' + file.xhr.responseText + ']');
                     valor.remove();
                     //$('valor['+file.name+']').remove();
-
                     $.ajax({
                         type: 'POST',
                         url: 'upload/delete',

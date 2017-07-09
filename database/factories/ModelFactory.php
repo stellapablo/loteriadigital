@@ -37,6 +37,7 @@ $factory->define(App\SADocumento::class, function (Faker\Generator $faker) {
         'tomo' => $faker->randomNumber($nbDigits = NULL),
         'fecha_documento' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now', $timezone = date_default_timezone_get()),
         'archivo' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
+        'tags' => $faker->text($maxNbChars = 20),
         'tag_id' => rand(1,4),
         'user_id' => rand(1,4),
         'store_id' => mt_rand(1,3),

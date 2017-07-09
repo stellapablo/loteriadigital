@@ -16,31 +16,32 @@
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li> <a href="{{ url('sad-documentos/create') }}"> Nuevo</a> </li>
-                    <li> <a href="{{ url('sad-documentos/busqueda') }}">Busqueda</a> </li>
-                    <li> <a href="{{ url('sad-documentos/grid') }}">Grilla</a> </li>
+                    <li> <a href="{{ url('sad-documento/create') }}"> Nuevo</a> </li>
+                    <li> <a href="{{ url('sad-documento') }}">Grilla</a> </li>
+                    <li> <a href="{{ url('sad-documento/indice') }}">Generar Indice</a> </li>
+                    <li> <a href="{{ url('sad-documento/busqueda') }}">Busqueda</a> </li>
                 </ul>
             </li>
             <li>
                 <a href="#" class="waves-effect">
                     <i class="fa fa-tags"></i>
-                    <span class="hide-menu"> Oficinas
+                    <span class="hide-menu"> Ubicaciones
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li> <a href="{{ url('oficinas/create') }}"> Nueva</a> </li>
-                    <li> <a href="{{ url('oficinas') }}">Busqueda</a> </li>
+                    <li> <a href="{{ url('ubicaciones/create') }}"> Nueva</a> </li>
+                    <li> <a href="{{ url('ubicaciones') }}">Busqueda</a> </li>
                 </ul>
             </li>
             <li>
                 <a href="#" class="waves-effect ">
                     <i class="fa fa-file-archive-o "></i>
-                    <span class="hide-menu"> Tipo de documento
+                    <span class="hide-menu"> Tipo de documentos
                     <span class="fa arrow"></span>
                 </a>
                 <ul class="nav nav-second-level">
-                    <li> <a href="{{ url('tipos/create') }}"> Nuevo</a> </li>
-                    <li> <a href="{{ url('tipos') }}">Busqueda</a> </li>
+                    <li> <a href="{{ url('tipo-documentos/create') }}"> Nuevo</a> </li>
+                    <li> <a href="{{ url('tipo-documentos') }}">Busqueda</a> </li>
                 </ul>
             </li>
             <li>

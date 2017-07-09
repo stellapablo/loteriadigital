@@ -37,18 +37,18 @@
     <div class="cssload-speeding-wheel"></div>
 </div>
 <div id="wrapper">
-    @include('layouts.header')
-    <!-- Left navbar-header -->
-    @include('layouts.leftnavbar')
-    <!-- Left navbar-header end -->
+@include('layouts.header')
+<!-- Left navbar-header -->
+@include('layouts.leftnavbar')
+<!-- Left navbar-header end -->
     <!-- Page Content -->
     <div id="page-wrapper">
         <div class="container-fluid">
             <div class="row" style="margin-bottom: 5px;">
             </div>
 
-            @yield('content')
-            <!-- /.container-fluid -->
+        @yield('content')
+        <!-- /.container-fluid -->
         </div>
         <!-- /#page-wrapper -->
 
@@ -85,7 +85,7 @@
     <script src="{{ url('plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
     <!--Style Switcher -->
     <script src="{{ url('plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
-    @yield('scripts.footer')
+@yield('scripts.footer')
 </body>
 
 </html>

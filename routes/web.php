@@ -16,7 +16,15 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('sad-documento/create',['as'=>'saddocumentos.create','uses'=>'SADocumentosController@create']);
-Route::post('sad-documento',['as'=>'saddocumentos.store','uses'=>'SADocumentosController@store']);
+Route::resource('sad-documento', 'SADocumentosController');
+Route::resource('ubicaciones', 'UbicacionController');
+Route::resource('tipo-documentos', 'TipoDocumentoController');
+
+
+
+//Route::get('sad-documento/create',['as'=>'saddocumentos.create','uses'=>'SADocumentosController@create']);
+//Route::post('sad-documento',['as'=>'saddocumentos.store','uses'=>'SADocumentosController@store']);
+
 Route::post('upload',['as'=>'saddocumentos.upload','uses'=>'SADocumentosController@addDocument']);
+Route::get('sad-documento/{sadocumento}/edit',['as'=>'saddocumentos.edit','uses'=>'SADocumentosController@edit']);
 
