@@ -19,6 +19,14 @@ class CreateTipoDocumentosTable extends Migration
             $table->timestamps();
             $table->softDeletes();
         });
+
+        Schema::create('ubicaciones', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombre')->index();
+            $table->string('direccion')->index();
+            $table->timestamps();
+            $table->softDeletes();
+        });
     }
 
     /**
@@ -29,5 +37,7 @@ class CreateTipoDocumentosTable extends Migration
     public function down()
     {
         Schema::dropIfExists('tipo_documentos');
+        Schema::dropIfExists('ubicaciones');
+
     }
 }

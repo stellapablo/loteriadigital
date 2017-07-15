@@ -17,8 +17,8 @@
                 </a>
                 <ul class="nav nav-second-level">
                     <li> <a href="{{ url('sad-documento/create') }}"> Nuevo</a> </li>
-                    <li> <a href="{{ url('sad-documento') }}">Grilla</a> </li>
-                    <li> <a href="{{ url('sad-documento/indice') }}">Generar Indice</a> </li>
+                    <li> <a href="{{ url('sad-documento') }}">Documentos</a> </li>
+                    <li> <a href="{{ url('sad-documento/generar-indice') }}">Generar Indice</a> </li>
                     <li> <a href="{{ url('sad-documento/busqueda') }}">Busqueda</a> </li>
                 </ul>
             </li>

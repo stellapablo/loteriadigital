@@ -19,7 +19,9 @@ class UbicacionController extends Controller
 
     public function index()
     {
-        //
+        $ubicaciones = Ubicacion::latest()->get();
+
+        return view('ubicaciones.index',compact('ubicaciones'));
     }
 
     /**

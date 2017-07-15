@@ -1,15 +1,12 @@
 @extends('layouts.master')
 @section('content')
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="panel panel-info">
-                <div class="panel-heading">Documentos / Secretaria Administrativa </div>
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-info">
+            <div class="panel-heading">Documentos / Secretaria Administrativa </div>
                 <div class="panel-wrapper collapse in" aria-expanded="true">
                     <div class="panel-body">
-
                         @include('flash::message')
-
                         @if (count($errors) > 0)
                             <div class="alert alert-danger">
                                 <ul>
@@ -51,7 +48,8 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label class="control-label">Tomo</label>
-                                            {!! Form::text('tomo', null, ['class' => 'form-control'])!!}
+                                            {!! Form::text('tomo', $sad->tomo, ['class' => 'form-control','disabled' => 'disabled'])!!}
+                                            <input type="hidden" name="tomo" value="{{ $sad->tomo }}">
                                         </div>
                                     </div>
                                 </div>
@@ -68,7 +66,7 @@
                                         <div class="input-group m-b-30"> <span class="input-group-addon">Tags</span>
                                             <div class="bootstrap-tagsinput">
                                                 <input type="text" name="tags"
-                                                       value="{{ $sad->tags }}"
+                                                       value="{{ $sad->hash }}"
                                                        data-role="tagsinput" placeholder="agregar tags">
                                             </div>
                                         </div>
@@ -94,7 +92,7 @@
                                         <div class="form-group">
                                             <label class="control-label">Documento actual:</label>
                                             <div class="input-group">
-                                                <a  target="_blank" href="{{ url('storage/'. $sad->tomo.'/'. $sad->archivo) }}">{{ $sad->archivo }}</a>
+                                                <a target="_blank" href="{{ url('storage/'. $sad->tomo.'/'. $sad->archivo) }}">{{ $sad->archivo }}</a>
                                             </div>
                                         </div>
                                     </div>
@@ -113,15 +111,14 @@
                                 </div>
                                 <div id="contInputs">
                                 </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
+                        </div>
+                 {{ Form::close() }}
             </div>
         </div>
-
-        @endsection
-        @section('scripts.footer')
+    </div>
+</div>
+@endsection
+@section('scripts.footer')
             <link href="{{ url('plugins/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css')  }}" rel="stylesheet" />
             <script src="{{ url('plugins/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>

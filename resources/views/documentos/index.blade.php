@@ -28,7 +28,7 @@
                                     <td>{{ $row->numero }}</td>
                                     <td>{{ $row->tipo }}</td>
                                     <td>{{ $row->oficina }}</td>
-                                    <td>{{ $row->created_at }}</td>
+                                    <td>{{ $row->created_at->toDayDateTimeString }}</td>
                                     <td>{{ $row->name }}</td>
                                 </tr>
                             @endforeach

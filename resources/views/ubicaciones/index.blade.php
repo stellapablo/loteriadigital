@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-sm-12">
             <div class="panel panel-warning">
-                <div class="panel-heading">Digitalizaciones de Seceretaria Administrativa
+                <div class="panel-heading">Ubicaciones
                     <div class="pull-right"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a> </div>
                 </div>
             </div>
@@ -14,28 +14,18 @@
                     <table id="myTable" class="table table-striped">
                         <thead>
                         <tr>
-                            <th>Tipo de DOCUMENTO</th>
-                            <th>Nro de DOC</th>
-                            <th>Fecha Carga</th>
-                            <th>Tomo</th>
-                            <th>Documento</th>
+                            <th>Nombre</th>
+                            <th>Dirección</th>
+                            <th></th>
                         </tr>
                         </thead>
                         <tbody>
-                        @foreach($sadocumento as $sad)
+                        @foreach($ubicaciones as $row)
                             <tr>
-                                <td>{{ $sad->tipo_documento }}</td>
-                                <td>{{ $sad->nro_documento }}</td>
-                                <td>{{ $sad->created_at->format('d/m/Y') }}</td>
-                                <td>{{ $sad->tomo }}</td>
+                                <td>{{ $row->nombre }}</td>
+                                <td>{{ $row->direccion }}</td>
                                 <td>
-                                    @can('update',$sad)
-                                        <a target="_blank" href="{{ route('sad-documento.edit',$sad->id) }}"><div class="col-sm-6 col-md-4 col-lg-3"><i title="Editar" class="ti-pencil"></i></div></a>
-                                    @endcan
-                                    <a href="{{ url('storage/'. $sad->tomo.'/'. $sad->archivo) }}"><div class="col-sm-6 col-md-4 col-lg-3">
-                                            <i title="Descargar" class="ti-download"></i>
-                                        </div>
-                                    </a>
+                                    <a href="{{ route('ubicaciones.edit',$row->id) }}"><div class="col-sm-6 col-md-4 col-lg-3"><i title="Editar" class="ti-pencil"></i></div></a>
                                 </td>
                             </tr>
                         @endforeach

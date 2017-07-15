@@ -13,8 +13,11 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'App\Events\Event' => [
-            'App\Listeners\EventListener',
+        'App\Events\UbicacionWasCreated' => [
+            'App\Listeners\SendMovUbicacion',
+        ],
+        'App\Events\DocumentoWasCreated' => [
+            'App\Listeners\SendMovDocumento',
         ],
     ];
 
@@ -27,6 +30,6 @@ class EventServiceProvider extends ServiceProvider
     {
         parent::boot();
 
-        //
+
     }
 }

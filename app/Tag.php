@@ -10,24 +10,27 @@ class Tag extends Model
 
     protected $fillable = ['nombre'];
 
-    public function documento() {
-        return $this->belongsTo('App\SADocumento','tag_id');
+
+    public static function add($tags,$doc){
+
+            foreach ($tags as $row) {
+
+                $check = null;
+                $check = Tag::where('nombre','like',$row)->count();
+
+                if($check == null){
+                    $tag = Tag::create(['nombre'=>$row]);
+
+                    $doc = Documento::find($doc);
+                    $doc->tags()->attach($tag);
+                }
+            }
     }
 
-    public static function add($tags){
-
-        foreach ($tags as $row) {
-
-           $check = null;
-
-           $check = Tag::where('nombre','like',$row)->count();
-
-           if($check == null){
-               Tag::create(['nombre'=>$row]);
-           }
-        }
-
+    public function documentos(){
+        return $this->belongsToMany(Documento::class);
     }
+
 
 
 }

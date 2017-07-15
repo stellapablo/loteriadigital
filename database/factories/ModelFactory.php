@@ -26,20 +26,21 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 
-$factory->define(App\SADocumento::class, function (Faker\Generator $faker) {
+$factory->define(App\Documento::class, function (Faker\Generator $faker) {
 
     $sourceDir = 'tmp/';
     $targetDir = 'app/';
+
     return [
         'tipo_documento'  => $faker->randomNumber($nbDigits = 8),
         'nro_documento'  => $faker->randomNumber($nbDigits = 8),
         'detalle' => $faker->text($maxNbChars = 200),
-        'tomo' => $faker->randomNumber($nbDigits = NULL),
+        'tomo' => '250',
         'fecha_documento' => $faker->dateTimeBetween($startDate = '-5 years', $endDate = 'now', $timezone = date_default_timezone_get()),
         'archivo' => $faker->image($dir = '/tmp', $width = 640, $height = 480),
-        'tags' => $faker->text($maxNbChars = 20),
-        'tag_id' => rand(1,4),
-        'user_id' => rand(1,4),
+        'hash' => 'test',
+        'user_id' => mt_rand(1,10),
         'store_id' => mt_rand(1,3),
     ];
+
 });

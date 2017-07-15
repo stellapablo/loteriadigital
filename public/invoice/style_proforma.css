@@ -1,0 +1,34 @@
+body {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    color: #001028;
+    background: #FFFFFF;
+    font-size: 12px;
+    font-family: Arial,Helvetica Neue,Helvetica,sans-serif;
+
+}
+
+header {
+    padding: 10px 0;
+    margin-bottom: 30px;
+}
+
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+    margin-bottom: 20px;
+
+}
+
+table tr td{
+    border: 1px solid black;
+}
+
+table tr th{
+    border: 1px solid black;
+}

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateSADocumentosTable extends Migration
+class CreateDocumentosTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,21 +13,31 @@ class CreateSADocumentosTable extends Migration
      */
     public function up()
     {
-        Schema::create('sec_admin_documentos', function (Blueprint $table) {
+        Schema::create('documentos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('tipo_documento')->index();
             $table->date('fecha_documento');
             $table->integer('tomo');
             $table->integer('nro_documento');
             $table->text('archivo')->nullable();
-            $table->text('tema')->nullable();
             $table->text('detalle')->nullable();
-            $table->string('tags')->index();
+            $table->string('hash')->nullable();
             $table->integer('store_id')->index();
-            $table->integer('tag_id')->index()->nullable();
             $table->integer('user_id')->index();
             $table->timestamps();
             $table->softDeletes();
+        });
+
+        Schema::create('tags', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('nombre')->index();
+            $table->timestamps();
+        });
+
+        Schema::create('documento_tag', function (Blueprint $table) {
+            $table->integer('documento_id');
+            $table->integer('tag_id');
+            $table->primary(['documento_id','tag_id']);
         });
     }
 
@@ -38,6 +48,9 @@ class CreateSADocumentosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('sec_admin_documentos');
+        Schema::dropIfExists('documentos');
+        Schema::dropIfExists('tags');
+        Schema::dropIfExists('documento_tag');
+
     }
 }
