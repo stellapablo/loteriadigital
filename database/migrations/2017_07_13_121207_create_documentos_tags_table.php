@@ -15,7 +15,7 @@ class CreateDocumentosTagsTable extends Migration
     {
         Schema::create('documentos', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('tipo_documento')->index();
+            $table->unsignedInteger('tipo_id')->index();
             $table->date('fecha_documento');
             $table->integer('tomo');
             $table->integer('nro_documento');

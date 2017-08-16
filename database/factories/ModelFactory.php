@@ -32,7 +32,7 @@ $factory->define(App\Documento::class, function (Faker\Generator $faker) {
     $targetDir = 'app/';
 
     return [
-        'tipo_documento'  => $faker->randomNumber($nbDigits = 8),
+        'tipo_documento'  =>  mt_rand(1,4),
         'nro_documento'  => $faker->randomNumber($nbDigits = 8),
         'detalle' => $faker->text($maxNbChars = 200),
         'tomo' => '250',

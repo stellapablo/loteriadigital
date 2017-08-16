@@ -6,6 +6,7 @@ use App\Documento;
 use App\Http\Requests\SADocumentoEditFormRequest;
 use App\Http\Requests\SADocumentoFormRequest;
 use App\Tag;
+use App\TipoDocumento;
 use App\Ubicacion;
 use Barryvdh\DomPDF\PDF;
 use Illuminate\Contracts\View\View;
@@ -29,10 +30,12 @@ class DocumentosController extends Controller
 
     public function create(){
 
+        $tipos = ['' => ''] + TipoDocumento::pluck('nombre', 'id')->all();
+
         $ubicaciones = ['' => ''] + Ubicacion::pluck('nombre', 'id')->all();
 
 
-        return view('sadocumentos.create',compact('ubicaciones'));
+        return view('sadocumentos.create',compact('ubicaciones','tipos'));
     }
 
     public function store(SADocumentoFormRequest $request){
@@ -79,9 +82,12 @@ class DocumentosController extends Controller
 
         $ubicaciones = ['' => ''] + Ubicacion::pluck('nombre', 'id')->all();
 
+        $tipos = ['' => ''] + TipoDocumento::pluck('nombre', 'id')->all();
+
+
         $tags = Documento::find($id)->tags;
 
-        return view('sadocumentos.edit',compact('sad','ubicaciones','tags'));
+        return view('sadocumentos.edit',compact('sad','ubicaciones','tags','tipos'));
     }
 
     public function addTags($request,$doc){
@@ -196,5 +202,11 @@ class DocumentosController extends Controller
 
         return $tag->documentos;
 
+    }
+
+    public function show(Documento $documento){
+
+
+        dd($documento);
     }
 }

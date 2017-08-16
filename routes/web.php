@@ -21,6 +21,8 @@ Route::resource('ubicaciones', 'UbicacionController');
 Route::resource('tipo-documentos', 'TipoDocumentoController');
 Route::post('sad-documento/indice', 'DocumentosController@gerenateIndice')->name('sad-documento.indice');
 Route::get('sad-documento/generar-indice', 'DocumentosController@indice');
+Route::get('sad-documento/{documento}/show',['as'=>'saddocumentos.view','uses'=>'DocumentosController@show']);
+
 
 
 

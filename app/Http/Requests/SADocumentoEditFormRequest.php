@@ -27,7 +27,7 @@ class SADocumentoEditFormRequest extends FormRequest
             'nro_documento' => 'required',
             'tomo' => 'required',
             'fecha_documento' => 'required|date',
-            'tipo_documento' => 'required|regex:/^[\pL\s\-]+$/u|max:255',
+            'tipo_documento' => 'required',
             'store_id' => 'required',
         ];
     }

@@ -30,7 +30,8 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">Tipo de documento</label>
-                                            {!! Form::text('tipo_documento', null, ['class' => 'form-control'])!!}
+                                            {!! Form::select('tipo_documento', $tipos ,  null, ['class' => 'form-control col-sm-4'])!!}
+
                                         </div>
                                     </div>
                                     <div class="col-md-4">
