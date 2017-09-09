@@ -42,7 +42,7 @@ $ascDesc = array(
                                                             <div class="col-md-4">
                                                                 <div class="form-group">
                                                                     <label class="control-label">Tipo de documento</label>
-                                                                    {!! Form::text('tipo_documento', null, ['class' => 'form-control'])!!}
+                                                                    {!! Form::select('tipo_documento', $tipos ,  null, ['class' => 'form-control'])!!}
                                                                 </div>
                                                             </div>
                                                             <div class="col-md-4">

@@ -9,7 +9,7 @@
         </ul>
         <ul class="nav navbar-top-links navbar-right pull-right">
             <li class="dropdown">
-                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="{{ url('plugins/images/users/user_icon_big.png') }}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ auth()->user()->nombre }}{{ auth()->user()->id }}</b> </a>
+                <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="{{ url('plugins/images/users/user_icon_big.png') }}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{ auth()->user()->nombre }}</b> </a>
                 <ul class="dropdown-menu dropdown-user animated flipInY">
                     <li><a href="#"><i class="ti-user"></i> Perfil</a></li>
                     <li><a href="#"><i class="ti-settings"></i> Configuración</a></li>

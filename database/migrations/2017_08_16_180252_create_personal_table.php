@@ -21,7 +21,7 @@ class CreatePersonalTable extends Migration
             $table->text('lugar');
             $table->timestamps();
             $table->softDeletes();
-        });
+        });zxvbn
 
         Schema::create('rrhh_documento', function (Blueprint $table) {
             $table->increments('id');

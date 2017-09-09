@@ -19,11 +19,19 @@ Route::get('/', 'HomeController@index')->name('home');
 Route::resource('sad-documento', 'DocumentosController', ['except' => ['show']]);
 Route::resource('ubicaciones', 'UbicacionController');
 Route::resource('tipo-documentos', 'TipoDocumentoController');
+Route::resource('personal', 'PersonalController');
+Route::resource('rrhh-documento', 'RRHHDocumentosController');
+Route::get('rhh-documento/{personal}/show',['as'=>'rrhhdocumentos.personal','uses'=>'RRHHDocumentosController@getDocumentosByPersonal']);
 Route::post('sad-documento/indice', 'DocumentosController@gerenateIndice')->name('sad-documento.indice');
 Route::get('sad-documento/generar-indice', 'DocumentosController@indice');
+Route::get('usuarios/registrar', 'PersonalController@registrar');
 Route::get('sad-documento/{documento}/show',['as'=>'saddocumentos.view','uses'=>'DocumentosController@show']);
 
-
+Route::get('search',function(){
+    $query = \Illuminate\Support\Facades\Input::get('query');
+    $users = \App\User::where('user','like','%'.$query.'%')->get();
+    return response()->json($users);
+});
 
 
 

@@ -141,6 +141,8 @@ class DocumentosController extends Controller
 
         $ubicaciones = ['' => ''] + Ubicacion::pluck('nombre', 'id')->all();
 
+        $tipos = ['' => ''] + TipoDocumento::pluck('nombre', 'id')->all();
+
         $numero = '';
         $ubicacion_id = '';
         $tomo = '';
@@ -167,7 +169,7 @@ class DocumentosController extends Controller
         }
 
         //desc ordenPor orden
-        return view('sadocumentos.find', compact('cantidadxpagina', 'ubicaciones', 'parametros', 'documentos', 'numero', 'cantReg'));
+        return view('sadocumentos.find', compact('tipos','cantidadxpagina', 'ubicaciones', 'parametros', 'documentos', 'numero', 'cantReg'));
     }
 
     public function indice(){

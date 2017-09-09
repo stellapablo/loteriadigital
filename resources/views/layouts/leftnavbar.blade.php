@@ -22,6 +22,19 @@
                     <li> <a href="{{ url('sad-documento/busqueda') }}">Busqueda</a> </li>
                 </ul>
             </li>
+            <li class="active">
+                <a href="#" class="waves-effect ">
+                    <i class="fa fa-file-pdf-o"></i>
+                    <span class="hide-menu"> Recursos Humanos</span>
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li> <a href="{{ url('rrhh-documento/create') }}"> Nuevo</a> </li>
+                    <li> <a href="{{ url('rrhh-documento') }}">Ultimos  Documentos</a> </li>
+                    <li> <a href="{{ url('rrhh-documento') }}">Documentos por personal</a> </li>
+                </ul>
+            </li>
+
             <li>
                 <a href="#" class="waves-effect">
                     <i class="fa fa-tags"></i>
@@ -42,6 +55,17 @@
                 <ul class="nav nav-second-level">
                     <li> <a href="{{ url('tipo-documentos/create') }}"> Nuevo</a> </li>
                     <li> <a href="{{ url('tipo-documentos') }}">Busqueda</a> </li>
+                </ul>
+            </li>
+            <li>
+                <a href="#" class="waves-effect ">
+                    <i class="fa fa-users "></i>
+                    <span class="hide-menu">Personal
+                    <span class="fa arrow"></span>
+                </a>
+                <ul class="nav nav-second-level">
+                    <li> <a href="{{ url('personal/create') }}"> Nuevo</a> </li>
+                    <li> <a href="{{ url('personal') }}">Registrados</a> </li>
                 </ul>
             </li>
             <li>

@@ -57,7 +57,7 @@ class Documento extends Model
 
     public function scopeWhereTipoDocumento($query, $tipo) {
         if (trim($tipo != '')) {
-            $query->where('tipo_documento', 'LIKE', '%' . $tipo . '%');
+            $query->where('tipo_documento','=',$tipo);
         }
     }
 

@@ -46,9 +46,7 @@
         <div class="container-fluid">
             <div class="row" style="margin-bottom: 5px;">
             </div>
-
-        @yield('content')
-        <!-- /.container-fluid -->
+            @yield('content')
         </div>
         <!-- /#page-wrapper -->
 

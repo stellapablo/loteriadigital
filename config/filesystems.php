@@ -53,6 +53,11 @@ return [
             'root' => public_path()."/storage",
         ],
 
+        'recurso_humano' => [
+            'driver' => 'local',
+            'root' => public_path()."/storage_rrhh",
+        ],
+
         'public' => [
             'driver' => 'local',
             'root' => storage_path('app/public'),

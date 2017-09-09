@@ -1,0 +1,1 @@
+<h2>{{ $exception->getMessage() }} asdasd</h2>
