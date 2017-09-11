@@ -27,6 +27,9 @@ Route::get('sad-documento/generar-indice', 'DocumentosController@indice');
 Route::get('usuarios/registrar', 'PersonalController@registrar');
 Route::get('sad-documento/{documento}/show',['as'=>'saddocumentos.view','uses'=>'DocumentosController@show']);
 
+Route::post('rrhh-documento/autocompletar', 'PersonalController@autocompletar');
+
+
 Route::get('search',function(){
     $query = \Illuminate\Support\Facades\Input::get('query');
     $users = \App\User::where('user','like','%'.$query.'%')->get();

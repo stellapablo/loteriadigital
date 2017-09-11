@@ -41,7 +41,7 @@ class RRHHDocumentosController extends Controller
         $file = $this->storeFile($documento);
 
         $doc = RRHHDocumento::create([
-            'personal_id' => $documento->personal_id,
+            'personal_id' => $documento->id_personal,
             'fecha_documento' => $documento->fecha_documento,
             'seccion_id' => $documento->seccion_id,
             'store_id' => $documento->store_id,

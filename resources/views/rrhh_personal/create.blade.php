@@ -30,7 +30,8 @@
                                     <div class="col-md-5">
                                         <div class="form-group">
                                             <label class="control-label">Personal</label>
-                                            {!! Form::select('personal_id', $personal ,  null, ['class' => 'form-control col-sm-4'])!!}
+                                            {!! Form::text('personal_id' ,null, ['class' => 'form-control col-sm-4','id'=>'personal_id'])!!}
+                                            <input type="hidden" name="id_personal" id="id_personal" >
                                         </div>
                                     </div>
                                     <div class="col-md-5">
@@ -97,61 +98,26 @@
             <link href="{{ url('plugins/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.css')  }}" rel="stylesheet" />
             <script src="{{ url('plugins/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
 
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
             <script>
-
-                Dropzone.options.addDoc = {
-                    paramName: 'file',
-                    addRemoveLinks: true,
-                    maxFiles: 2,
-                    dictDefaultMessage: 'Arrastre el documento que desea guardar',
-                    dictCancelUpload: true,
-                    dictRemoveFile: 'Eliminar',
-                    // The setting up of the dropzone
-                    init: function () {
-                        var i = 0;
-                        var fileList = new Array;
-                        this.on("success", function (file, serverFileName) {
-                            //fileList[file.name] = file.name;
-                            //console.log(serverFileName);
-                            //var obj = JSON.parse(serverFileName);
-                            //console.log(serverFileName); // <---- here is your filename
-
-                            $("#contInputs").append('<input type="hidden" name="valor[' + serverFileName + ']" id="valor[' + serverFileName + ']" value="' + serverFileName + '"  > ');
-
+                $('#personal_id').autocomplete({
+                    source: function (request, response) {
+                        $.ajax({
+                            type: 'POST',
+                            url: 'autocompletar',
+                            dataType: "json",
+                            data: {
+                                term: $('#personal_id').val()
+                            },
+                            success: function (data) {
+                                response(data);
+                            }
                         });
-                        this.on("removedfile", function (file) {
-                            //console.log(file.xhr.responseText);
-                            var valor = document.getElementById('valor[' + file.xhr.responseText + ']');
-                            valor.remove();
-                            //$('valor['+file.name+']').remove();
-                            $.ajax({
-                                type: 'POST',
-                                url: 'upload/delete',
-                                data: {file: file.xhr.responseText, _token: $("input[name=_token]").val()},
-                                dataType: 'html',
-                                success: function (data) {
-                                }
-                            });
-
-                        });
-                    },
-                    error: function (file, response) {
-                        if ($.type(response) === "string")
-                            var message = response; //dropzone sends it's own error messages in string
-                        else
-                            var message = response.message;
-                        file.previewElement.classList.add("dz-error");
-                        _ref = file.previewElement.querySelectorAll("[data-dz-errormessage]");
-                        _results = [];
-                        for (_i = 0, _len = _ref.length; _i < _len; _i++) {
-                            node = _ref[_i];
-                            _results.push(node.textContent = message);
-                        }
-                        return _results;
-                    },
-                }
-            </script>
+                },
+                    select: function(event, ui) {
+                        $("#id_personal").val(ui.item.id);
+                    }
+                });
+                    </script>
             <script>
                 jQuery('.mydatepicker, #datepicker').datepicker({
                         format: 'yyyy-mm-dd'

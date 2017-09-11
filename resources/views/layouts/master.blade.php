@@ -83,6 +83,8 @@
     <script src="{{ url('plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
     <!--Style Switcher -->
     <script src="{{ url('plugins/bower_components/styleswitcher/jQuery.style.switcher.js') }}"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <link href="https://code.jquery.com/ui/jquery-ui-git.css" rel="stylesheet">
 @yield('scripts.footer')
 </body>
 

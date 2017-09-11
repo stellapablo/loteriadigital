@@ -59,30 +59,28 @@ class PersonalController extends Controller
         return view('auth.register',compact('roles'));
     }
 
-    public function completarPersonal(Request $request) {
+    public function autocompletar(Request $request) {
 
-        dd($request);
 
         $data = $request->term;
         $personal = DB::table('personal')->where('apellido', 'LIKE', '%' . trim($data) . '%')
-                                         ->get();
+            ->select('id','nombre','apellido')
+            ->get();
 
         $row_array = array();
 
-        dd($personal);
-
         foreach ($personal as $row) {
-            if ($row->apellido != '') {
                 array_push($row_array, array(
                         "id" => $row->id,
-                        "value" => $row->nombre . "" . $row->apellido
+                        "value" => $row->apellido . " " . $row->nombre
                     )
                 );
-            }
         }
 
-        //dd($row_array);
+
         echo json_encode($row_array);
     }
+
+
 
 }
