@@ -25,7 +25,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label class="control-label">Tipo de documento</label>
-                                            {!! Form::text('tipo_documento', null, ['class' => 'form-control'])!!}
+                                            {!! Form::select('tipo_documento', $tipos ,  null, ['class' => 'form-control col-sm-4'])!!}
                                         </div>
                                     </div>
                                     <div class="col-md-4">
@@ -40,7 +40,7 @@
                                         <div class="form-group">
                                             <label class="control-label">Fecha de documento</label>
                                             <div class="input-group">
-                                                {!! Form::text('fecha_documento', null, ['class' => 'form-control mydatepicker', 'placeholder' => 'dd/mm/yyyy'])!!}
+                                                {!! Form::text('fecha_documento', null, ['class' => 'form-control','id'=>'fecha_documento', 'placeholder' => 'dd/mm/yyyy'])!!}
                                                 <span class="input-group-addon"><i class="icon-calender"></i></span>
                                             </div>
                                         </div>
@@ -123,9 +123,8 @@
             <script src="{{ url('plugins/bower_components/bootstrap-tagsinput/dist/bootstrap-tagsinput.min.js') }}"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
             <script>
-                jQuery('.mydatepicker, #datepicker').datepicker({
-                        format: 'yyyy-mm-dd'
-                    }
+                $("#fecha_documento").datepicker(
+                    { dateFormat: 'yy-mm-dd' }
                 );
             </script>
 @endsection

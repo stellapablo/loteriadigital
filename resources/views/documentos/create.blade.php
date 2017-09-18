@@ -45,7 +45,7 @@
                                         <div class="form-group">
                                             <label class="control-label">Fecha</label>
                                             <div class="input-group">
-                                                {!! Form::text('fecha_doc', null, ['class' => 'form-control mydatepicker', 'placeholder' => 'dd/mm/yyyy'])!!}
+                                                {!! Form::text('fecha_doc', null, ['class' => 'form-control','id'=>'fecha_documento2', 'placeholder' => 'dd/mm/yyyy'])!!}
                                                 <span class="input-group-addon"><i class="icon-calender"></i></span>
                                             </div>
                                         </div>
@@ -112,6 +112,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.3.0/dropzone.js"></script>
     <script>
 
+        $("#fecha_documento").datepicker(
+            { dateFormat: 'yyyy-mm-dd' }
+        );
+
+
         Dropzone.options.addDoc = {
             paramName: 'file',
             addRemoveLinks: true,
@@ -166,11 +171,5 @@
                 return _results;
             },
         }
-    </script>
-    <script>
-        jQuery('.mydatepicker, #datepicker').datepicker({
-                    format: 'yyyy-mm-dd'
-                }
-        );
     </script>
 @endsection

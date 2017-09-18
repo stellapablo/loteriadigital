@@ -1,74 +1,69 @@
 @extends('layouts.master')
 @section('content')
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Registrar Usuario</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">Documentos / Secretaria Administrativa </div>
+                <div class="panel-wrapper collapse in" aria-expanded="true">
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
-                            {{ csrf_field() }}
 
-                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
-                                <label for="name" class="col-md-4 control-label">Nombre</label>
+                        @include('flash::message')
 
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" name="nombre" value="{{ old('nombre') }}" required autofocus>
 
-                                    @if ($errors->has('name'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('name') }}</strong>
-                                    </span>
-                                    @endif
+                        @if (count($errors) > 0)
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+                        @include('layouts.flash')
+                        <form action="{{ route('personal.store') }}" method="POST" >
+                        <div class="form-body">
+                            <h3 class="box-title">PERSONAL</h3>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">DNI</label>
+                                        {!! Form::text('dni', null, ['class' => 'form-control'])!!}
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Lugar</label>
+                                        {!! Form::text('lugar', null, ['class' => 'form-control'])!!}
+                                    </div>
                                 </div>
                             </div>
-
-                            <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                                <div class="col-md-6">
-                                        <input class="form-control" v-validate="'required|email'" name="email" type="text" placeholder="Email">
-                                    </p>
-
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Apellido</label>
+                                        {!! Form::text('apellido', null, ['class' => 'form-control'])!!}
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password" required>
-
-                                    @if ($errors->has('password'))
-                                        <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
-                                    @endif
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label class="control-label">Nombre</label>
+                                        {!! Form::text('nombre', null, ['class' => 'form-control'])!!}
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label for="password-confirm" class="col-md-4 control-label">Confirmar Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
-                                </div>
                             </div>
-
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Register
-                                    </button>
-                                </div>
+                            <hr>
+                            <div class="form-actions">
+                                <button type="submit" class="btn btn-success"> <i class="fa fa-check"></i>Guardar</button>
                             </div>
-                        </form>
+                            <div id="contInputs">
+                            </div>
+                        </div>
+                        {{ Form::close() }}
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
 @endsection
-

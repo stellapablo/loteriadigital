@@ -13,13 +13,14 @@ class PersonalController extends Controller
 {
     public function index(){
 
-        $personas = Personal::all();
+        $personas = Personal::orderBy('id','DESC')->get();
 
         return view('personal.index',compact('personas'));
 
     }
 
     public function create(){
+
         return view('personal.create');
     }
 
